@@ -84,6 +84,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch google-chrome
     , ((modm, xK_g     ), spawn "google-chrome")
  
+    -- launch firefox
+    , ((modm, xK_f     ), spawn "google-chrome")
+ 
     -- launch wicd-curses
     , ((modm, xK_w     ), spawn "gnome-terminal -e wicd-curses")
  
