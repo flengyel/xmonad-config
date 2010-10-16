@@ -1,0 +1,10 @@
+#don't include objects
+*.o
+# and generated code and log files
+*.hi
+xmonad-i386-linux
+xmonad.errors
+#
+# How to override something excluded
+#*.html
+#!index.html
