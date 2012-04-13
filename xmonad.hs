@@ -83,7 +83,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
  
     -- launch emacs
-    , ((modm, xK_x     ), spawn "/usr/bin/emacs23-x")
+    , ((modm, xK_x     ), spawn "/usr/bin/emacs")
 
     -- launch google-chrome
     , ((modm, xK_z    ), spawn "google-chrome")
