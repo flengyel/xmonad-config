@@ -1,24 +1,28 @@
 #!/bin/bash
+
+cd $HOME
  
 # Load resources
-xrdb -merge .Xresources
+/usr/bin/xrdb -merge .Xresources
 
 # Set up an icon tray
-trayer --edge top --align right --SetDockType true \
+/usr/bin/trayer --edge top --align right --SetDockType true \
        --SetPartialStrut true --expand true --width 10 \
        --transparent true --tint 0x191970 --height 12 &
  
 # Set the background color
-xsetroot -solid midnightblue
+/usr/bin/xsetroot -solid midnightblue
 
 # launch apps
  
-xscreensaver -no-splash &
+#xscreensaver -no-splash &
 
-if [ -x /usr/bin/gnome-power-manager ] ; then
-   sleep 3
-   gnome-power-manager &
-fi
+# more trouble than it's worth == keeps shutting 
+off computer if power supply intermittently disconnected.
+#if [ -x /usr/bin/gnome-power-manager ] ; then
+#   sleep 3
+#   gnome-power-manager &
+#fi
 
 if [ -x /usr/bin/gnome-volume-control-applet ] ; then
    gnome-volume-control-applet &
@@ -33,12 +37,13 @@ if [ -x /usr/bin/bluetooth-applet ] ; then
 fi
 
 if [ -x /usr/bin/dropbox ] ; then
-   dropbox start
+   dropbox start &
 fi
   
-# BUGZ probably due to GTK+
-#if [ -x /usr/local/bin/googsystray ] ; then
-#   googsystray &
-#fi
+if [ -x /usr/bin/xflux ]; then
+   if [ "pslist xflux" != "" ]; then
+      xflux -z 10023
+   fi;
+fi
   
 xmonad

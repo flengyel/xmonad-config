@@ -34,7 +34,11 @@ myBorderWidth   = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = mod1Mask
+-- Thanks to Xah Lee's ergoemacs, I'm using mod4Mask
+-- the "Windows" key has become the xmonad key
+-- AH HA HA HA!
+
+myModMask       = mod4Mask
  
 -- The mask for the numlock key. Numlock status is "masked" from the
 -- current modifier status, so the keybindings will work with numlock on or
@@ -49,7 +53,7 @@ myModMask       = mod1Mask
 -- Set numlockMask = 0 if you don't have a numlock key, or want to treat
 -- numlock status separately.
 --
-myNumlockMask   = mod2Mask
+-- myNumlockMask   = mod2Mask
  
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -60,7 +64,7 @@ myNumlockMask   = mod2Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["1","2","3","4","5","6","7","8","9","infinity"]
  
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -78,17 +82,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
  
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    -- launch emacs
+    , ((modm, xK_x     ), spawn "/usr/bin/emacs23-x")
 
     -- launch google-chrome
-    , ((modm, xK_g     ), spawn "google-chrome")
+    , ((modm, xK_z    ), spawn "google-chrome")
  
-    -- launch firefox
-    , ((modm, xK_f     ), spawn "google-chrome")
- 
-    -- launch wicd-curses
-    , ((modm, xK_w     ), spawn "gnome-terminal -e wicd-curses")
+    -- launch pyroom
+    , ((modm, xK_y    ), spawn "pyroom")
  
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -193,10 +194,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- defaults, as xmonad preserves your old layout settings by default.
 --
 -- The available layouts.  Note that each layout is separated by |||,
--- which denotes layout choice.
---
--- myLayout = tiled ||| Mirror tiled ||| Full
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full
+myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -280,7 +278,6 @@ main = do
         focusFollowsMouse  = myFocusFollowsMouse,
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
-        numlockMask        = myNumlockMask,
         workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
@@ -292,11 +289,10 @@ main = do
       -- hooks, layouts
         layoutHook         = myLayout,
         manageHook         = myManageHook,
---         logHook            = myLogHook,
-	logHook = dynamicLogWithPP $ xmobarPP 
-                        { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
-                        },
+--	logHook = dynamicLogWithPP $ xmobarPP 
+ --                       { ppOutput = hPutStrLn xmproc
+  --                      , ppTitle = xmobarColor "green" "" . shorten 50
+   --                     },
         startupHook        = myStartupHook
     }
 
