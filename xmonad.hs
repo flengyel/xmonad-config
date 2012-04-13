@@ -53,7 +53,7 @@ myModMask       = mod4Mask
 -- Set numlockMask = 0 if you don't have a numlock key, or want to treat
 -- numlock status separately.
 --
--- myNumlockMask   = mod2Mask
+myNumlockMask   = mod2Mask
  
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -194,7 +194,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- defaults, as xmonad preserves your old layout settings by default.
 --
 -- The available layouts.  Note that each layout is separated by |||,
-myLayout = tiled ||| Mirror tiled ||| Full
+-- which denotes layout choice.
+--
+-- myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -278,6 +281,7 @@ main = do
         focusFollowsMouse  = myFocusFollowsMouse,
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
+     --   numlockMask        = myNumlockMask,
         workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
@@ -289,10 +293,11 @@ main = do
       -- hooks, layouts
         layoutHook         = myLayout,
         manageHook         = myManageHook,
---	logHook = dynamicLogWithPP $ xmobarPP 
- --                       { ppOutput = hPutStrLn xmproc
-  --                      , ppTitle = xmobarColor "green" "" . shorten 50
-   --                     },
+--         logHook            = myLogHook,
+	logHook = dynamicLogWithPP $ xmobarPP 
+                        { ppOutput = hPutStrLn xmproc
+                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        },
         startupHook        = myStartupHook
     }
 
