@@ -36,7 +36,6 @@ myBorderWidth   = 1
 --
 -- Thanks to Xah Lee's ergoemacs, I'm using mod4Mask
 -- the "Windows" key has become the xmonad key
--- AH HA HA HA!
 
 myModMask       = mod4Mask
  
@@ -87,6 +86,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch google-chrome
     , ((modm, xK_z    ), spawn "google-chrome")
+ 
+    -- launch djview
+    , ((modm, xK_d    ), spawn "djview")
  
     -- launch pyroom
     , ((modm, xK_y    ), spawn "pyroom")
