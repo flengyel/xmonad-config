@@ -63,7 +63,7 @@ myNumlockMask   = mod2Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9","infinity"]
+myWorkspaces    = ["0","1","2","3","4","5","6","7","8","9"]
  
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -81,17 +81,20 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
  
-    -- launch emacs
-    , ((modm, xK_x     ), spawn "/usr/bin/emacs")
-
-    -- launch google-chrome
-    , ((modm, xK_z    ), spawn "google-chrome")
+    -- launch acroread
+    , ((modm, xK_a    ), spawn "acroread")
  
     -- launch djview
     , ((modm, xK_d    ), spawn "djview")
  
+    -- launch emacs
+    , ((modm, xK_x     ), spawn "/usr/bin/emacs")
+
     -- launch pyroom
     , ((modm, xK_y    ), spawn "pyroom")
+ 
+    -- launch google-chrome
+    , ((modm, xK_z    ), spawn "google-chrome")
  
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
