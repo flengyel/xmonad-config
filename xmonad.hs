@@ -1,5 +1,5 @@
 --
--- xmonad example config file.
+-- xmonad config file.
 --
 -- A template showing all available configuration hooks,
 -- and how to override the defaults in your own xmonad.hs conf file.
@@ -95,6 +95,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- launch google-chrome
     , ((modm, xK_z    ), spawn "google-chrome")
+ 
+    -- disable touchpad
+    , ((modm, xK_o    ), spawn "synclient touchpadoff=1")
+ 
+    -- enable touchpad
+    , ((modm, xK_i    ), spawn "synclient touchpadoff=0")
  
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
