@@ -38,6 +38,7 @@ myBorderWidth   = 1
 -- the "Windows" key has become the xmonad key
 
 myModMask       = mod4Mask
+-- myModMask	= mod1Mask
  
 -- The mask for the numlock key. Numlock status is "masked" from the
 -- current modifier status, so the keybindings will work with numlock on or
