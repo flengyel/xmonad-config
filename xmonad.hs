@@ -80,40 +80,46 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
  
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    , ((modm, xK_p), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
  
     -- launch acroread
-    , ((modm, xK_a    ), spawn "acroread")
+    , ((modm, xK_a), spawn "acroread")
  
     -- launch djview
-    , ((modm, xK_d    ), spawn "djview")
+    , ((modm, xK_d), spawn "djview")
+ 
+    -- launch rstudio
+    , ((modm, xK_f), spawn "/usr/bin/inkscape")
+
+    -- launch rstudio
+    , ((modm, xK_s), spawn "/usr/bin/rstudio")
+
+    -- launch xsel | festival --tts --pipe
+    , ((modm, xK_x), spawn "xsel | festival --tts --pipe")
  
     -- launch emacs
-    , ((modm, xK_x     ), spawn "/usr/bin/emacs")
+    , ((modm, xK_y), spawn "/usr/bin/emacs")
 
-    -- launch pyroom
-    , ((modm, xK_y    ), spawn "pyroom")
- 
     -- launch google-chrome
-    , ((modm, xK_z    ), spawn "google-chrome")
+    , ((modm, xK_z), spawn "google-chrome")
  
     -- disable touchpad
-    , ((modm, xK_o    ), spawn "synclient touchpadoff=1")
+    , ((modm, xK_o), spawn "synclient touchpadoff=1")
  
     -- enable touchpad
-    , ((modm, xK_i    ), spawn "synclient touchpadoff=0")
+    , ((modm, xK_i), spawn "synclient touchpadoff=0")
  
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
  
      -- Rotate through the available layout algorithms
-    , ((modm,               xK_space ), sendMessage NextLayout)
+    , ((modm, xK_space), sendMessage NextLayout)
  
     --  Reset the layouts on the current workspace to default
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
  
     -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
+    , ((modm, xK_n), refresh)
  
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
