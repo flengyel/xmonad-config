@@ -8,7 +8,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                        "--high","red","--low","lightblue"] 18000
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
-                    , Run Date "%a %b %_d %l:%M" "date" 10
+                    , Run Date "%a %b %_d %k:%M" "date" 10
                     , Run StdinReader
 		    , Run BatteryP ["BAT0"]
  ["-t", "Bat: <left>%", "-L", "50", "-H", "75", "-l", "red", "-n", "yellow", "-h", "cyan"] 600

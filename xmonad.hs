@@ -83,10 +83,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_p), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
  
     -- launch acroread
-    , ((modm, xK_a), spawn "acroread")
+    , ((modm, xK_a), spawn "anki")
  
     -- launch djview
-    , ((modm, xK_d), spawn "djview")
+    , ((modm, xK_d), spawn "brain.sh")
  
     -- launch rstudio
     , ((modm, xK_f), spawn "/usr/bin/inkscape")
