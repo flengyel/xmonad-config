@@ -11,7 +11,7 @@ cd $HOME
        --transparent true --tint 0x191970 --height 12 &
  
 # Set the background color
-/usr/bin/xsetroot -solid blue
+/usr/bin/xsetroot -solid orange
 
 # launch apps
  
